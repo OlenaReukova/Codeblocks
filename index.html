@@ -1,4 +1,5 @@
-<p>
+<html>
+  <p>
   The <button id="noun1">dog</button> 
 <button id="verb">saw</button> the
   <button id="adjective">white</button>
@@ -20,5 +21,99 @@
 </p>
 
 <p>
-<img id="picture" src="https://m.media-amazon.com/images/M/MV5BZDA0MmJiZDktMjVjNy00NDA1LTg5MzMtZTVmY2Y4MTE0OTVjXkEyXkFqcGdeQWFybm8@._V1_.jpg" height ="160" width="200" >
+<img id="picture" src="https://m.media-amazon.com/images/M/MV5BZDA0MmJiZDktMjVjNy00NDA1LTg5MzMtZTVmY2Y4MTE0OTVjXkEyXkFqcGdeQWFybm8@._V1_.jpg" height ="320" width="400" >
 </p>
+<script>
+  function getWords(type) {
+  // Return words of a given type, or all words if type is 'WORD'
+  let words = [
+    {type: 'ADJECTIVE', value: 'big'},
+    {type: 'ADJECTIVE', value: 'purple'},
+    {type: 'ADJECTIVE', value: 'new'},
+    {type: 'ADJECTIVE', value: 'interesting'},
+    {type: 'ADJECTIVE', value: 'curious'},
+    {type: 'ADJECTIVE', value: 'happy'},
+    {type: 'ADJECTIVE', value: 'busy'},
+    {type: 'ADJECTIVE', value: 'tiny'},
+    {type: 'NOUN', value: 'umbrella'},
+    {type: 'NOUN', value: 'knee'},
+    {type: 'NOUN', value: 'banana'},
+    {type: 'NOUN', value: 'platypus'},
+    {type: 'NOUN', value: 'cat'},
+    {type: 'NOUN', value: 'mouse'},
+    {type: 'NOUN', value: 'house'},
+    {type: 'VERB', value: 'impressed'},
+    {type: 'VERB', value: 'honoured'},
+    {type: 'VERB', value: 'saw'},
+    {type: 'VERB', value: 'ate'},
+    {type: 'VERB', value: 'surprised'},
+    {type: 'VERB', value: 'annoyed'},
+    {type: 'VERB', value: 'touched'},
+    {type: 'VERB', value: 'understood'},
+    {type: 'VERB', value: 'taught'},
+  ];
+  return words.filter(word => type === 'WORD' || word.type === type).map(word => word.value);
+}
+
+function randomInt(n) {
+  // Return a random number from in [0, n[
+  return Math.floor(Math.random()*n);
+}
+
+function randomMember(arr) {
+  // Return a random member of the array
+  return arr[randomInt(arr.length)]
+}
+
+
+
+document.getElementById('noun1').addEventListener('click', (event) => {
+  let element_noun1 = document.getElementById('noun1');
+  element_noun1.innerText = randomMember(getWords('NOUN'));
+
+});
+
+document.getElementById('verb').addEventListener('click', (event) => {
+  let element_verb = document.getElementById('verb');
+  element_verb.innerText = randomMember(getWords('WORD'));
+
+});
+
+document.getElementById('adjective').addEventListener('click', (event) => {
+  let element_adjective = document.getElementById('adjective');
+  element_adjective.innerText = randomMember(getWords('WORD'));
+
+});
+
+document.getElementById('noun2').addEventListener('click', (event) => {
+  event.target.innerText = randomMember(getWords('WORD'));
+
+});
+
+document.getElementById('DayMode').addEventListener('click', (event) => {
+  let element_Mylist = document.getElementById('Mylist');
+  element_Mylist.style.backgroundColor = '#ffccff';
+  element_Mylist.style.color = '#000000';
+
+});
+
+document.getElementById('NightMode').addEventListener('click', (event) => {
+  let element_Mylist2 = document.getElementById('Mylist');
+  element_Mylist2.style.backgroundColor = '#000000';
+  element_Mylist2.style.color = '#ffff00';
+
+});
+
+document.getElementById('buttoncolor').addEventListener('click', (event) => {
+  let element_buttoncolor = document.getElementById('buttoncolor');
+  element_buttoncolor.style.backgroundColor = '#6633ff';
+
+});
+
+document.getElementById('picture').addEventListener('click', (event) => {
+  let element_picture = document.getElementById('picture');
+  element_picture.setAttribute("src", 'https://www.dreamworks.com/storage/cms-uploads/the-bad-guys-share-image-v2.jpg');
+
+});
+</script>
+</html>
